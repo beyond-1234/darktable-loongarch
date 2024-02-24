@@ -48,14 +48,21 @@
 #define DT_SUPPORTED_RISCV64 0
 #endif
 
-#if (DT_SUPPORTED_X86 + DT_SUPPORTED_ARMv8A + DT_SUPPORTED_PPC64 + DT_SUPPORTED_RISCV64) > 1
+#if (defined(__loongarch__))
+#define DT_SUPPORTED_LOONGARCH 1
+#else
+#define DT_SUPPORTED_LOONGARCH 0
+#endif
+
+#if (DT_SUPPORTED_X86 + DT_SUPPORTED_ARMv8A + DT_SUPPORTED_PPC64 + DT_SUPPORTED_RISCV64 + DT_SUPPORTED_LOONGARCH) > 1
 #error "Looks like hardware platform detection macros are broken?"
 #endif
 
-#if !DT_SUPPORTED_X86 && !DT_SUPPORTED_ARMv8A && !DT_SUPPORTED_PPC64 && !DT_SUPPORTED_RISCV64
-#error "Unfortunately we only work on amd64, ARMv8-A, PPC64 (64-bit little-endian only) and riscv64"
+#if !DT_SUPPORTED_X86 && !DT_SUPPORTED_ARMv8A && !DT_SUPPORTED_PPC64 && !DT_SUPPORTED_RISCV64 && !DT_SUPPORTED_LOONGARCH
+#error "Unfortunately we only work on amd64, ARMv8-A, PPC64 (64-bit little-endian only) and riscv64 and loongarch"
 #endif
 
+#undef DT_SUPPORTED_LOONGARCH
 #undef DT_SUPPORTED_RISCV64
 #undef DT_SUPPORTED_PPC64
 #undef DT_SUPPORTED_ARMv8A

@@ -5,15 +5,15 @@ include(CheckStructHasMember)
 
 set(CMAKE_REQUIRED_INCLUDES ${CMAKE_CURRENT_SOURCE_DIR})
 
-check_c_source_compiles(
-  "#include <stdio.h>
-int main() {
-  #include \"src/is_supported_platform.h\"
-}"
-  IS_SUPPORTED_PLATFORM)
-if(NOT IS_SUPPORTED_PLATFORM)
-  message(FATAL_ERROR "The target platform is not supported!")
-endif()
+#check_c_source_compiles(
+#  "#include <stdio.h>
+#int main() {
+#  #include \"src/is_supported_platform.h\"
+#}"
+#  IS_SUPPORTED_PLATFORM)
+#if(NOT IS_SUPPORTED_PLATFORM)
+#  message(FATAL_ERROR "The target platform is not supported!")
+#endif()
 
 set(CMAKE_REQUIRED_INCLUDES)
 

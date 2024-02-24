@@ -788,7 +788,7 @@ int dt_init(int argc, char *argv[], const gboolean init_gui, const gboolean load
 #endif
 
   // make everything go a lot faster.
-  dt_mm_enable_flush_zero();
+  (void)dt_mm_enable_flush_zero();
 
   dt_set_signal_handlers();
 
